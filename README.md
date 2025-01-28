@@ -19,7 +19,7 @@ To track and analyze video performance, initialize the FastPix Data SDK with you
 1. **[Access the FastPix Dashboard](https://dashboard.fastpix.io)**: Log in and navigate to the Workspaces section.
 2. **Locate Your Workspace Key**: Copy the Workspace Key for client-side monitoring.
 
-# Step 1: Installation and setup:
+# Step 1: Installation and Setup:
 
 To get started with the SDK, install using npm or your favourite node package manager 😉:
 
@@ -79,7 +79,7 @@ fastpixMetrix.tracker(videoPlayerElement, {
 
 After successfully completing Step 3, you can track viewer metrics in the FastPix dashboard once playback ends. Steps 4, 5, and 6 are optional and can be utilized as needed to enhance your integration.
 
-# STEP 4: Enhance your tracking with user passable metadata
+# Step 4: Enhance Tracking with User Passable Metadata
 
 Check out the [user-passable metadata](https://docs.fastpix.io/docs/user-passable-metadata) documentation to see the metadata supported by FastPix. You can use custom metadata fields like `custom_1` to `custom_10` for your business logic, giving you the flexibility to pass any required values. Named attributes, such as `video_title` and `video_id`, can be passed directly as they are.
 
@@ -131,7 +131,7 @@ fastpixMetrix.tracker(videoPlayerElement, {
 
 Keep metadata consistent across different video loads to make comparison easier in your analytics dashboard.
 
-# STEP 5: Advanced Customization with FastPix Data SDK
+# Step 5: Advanced Customization with FastPix Data SDK
 
 | Attribute                | Description                                                                                                                                                                                                                                                                                                                                                  | Type    | Example Usage                   |
 | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------- | ------------------------------- |
@@ -163,7 +163,7 @@ const trackingData = {
 fastpixMetrix.tracker(videoPlayerElement, trackingData);
 ```
 
-# STEP 6: Emit Custom Events
+# Step 6: Emit Custom Events
 
 ### Advanced Error Reporting and Contextual Tracking 
 
