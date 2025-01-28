@@ -1,6 +1,6 @@
 {
   "name": "@fastpix/data-core",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "FastPix, Inc",
   "license": "MIT",
   "description": "JavaScript SDK for monitoring HLS player performance and analytics.",

@@ -1,7 +1,7 @@
 interface ErrorData {
-  playerErrorCode?: string;
-  playerErrorMessage?: string;
-  playerErrorContext?: string;
+  player_error_code?: string | number;
+  player_error_message?: string;
+  player_error_context?: string;
 }
 
 interface AccuracyData {
@@ -33,20 +33,20 @@ export class ErrorManager {
     this.eventEmitter.on("error", (errorInfo: ErrorData) => {
       try {
         if (
-          errorInfo.playerErrorCode ||
-          errorInfo.playerErrorMessage ||
-          errorInfo.playerErrorContext
+          errorInfo?.player_error_code ||
+          errorInfo.player_error_message ||
+          errorInfo.player_error_context
         ) {
-          this.accuracy.data.playerErrorCode = errorInfo.playerErrorCode ?? "";
-          this.accuracy.data.playerErrorMessage =
-            errorInfo.playerErrorMessage ?? "";
-          this.accuracy.data.playerErrorContext =
-            errorInfo.playerErrorContext ?? "";
+          this.accuracy.data.player_error_code = errorInfo.player_error_code ?? "";
+          this.accuracy.data.player_error_message =
+            errorInfo.player_error_message ?? "";
+          this.accuracy.data.player_error_context =
+            errorInfo.player_error_context ?? "";
           this.hasErrorOccurred = true;
         } else {
-          delete this.accuracy.data.playerErrorCode;
-          delete this.accuracy.data.playerErrorMessage;
-          delete this.accuracy.data.playerErrorContext;
+          delete this.accuracy.data.player_error_code;
+          delete this.accuracy.data.player_error_message;
+          delete this.accuracy.data.player_error_context;
         }
       } catch (err) {
         if (this.accuracy.userConfigData?.actionableData?.debug) {

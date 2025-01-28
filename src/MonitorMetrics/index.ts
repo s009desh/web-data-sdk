@@ -423,7 +423,7 @@ nucleusState.prototype.filterData = function (str: string) {
     workerInstance.worker.postMessage({
       command: "checkPulse",
       pausestate: workerInstance.data.player_is_paused,
-      errortracker: workerInstance.warning.viewInaccuracy,
+      errortracker: workerInstance.warning.hasErrorOccurred,
     });
 
     if (str === "viewCompleted") {

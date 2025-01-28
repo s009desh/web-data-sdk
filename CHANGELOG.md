@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.1]
+- Updated the error event parameter names to ensure accurate tracking and consistency with the `readme.md`.
+
 ## [1.0.0]
 
 ### Added
