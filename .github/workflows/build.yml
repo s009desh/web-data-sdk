@@ -1,10 +1,10 @@
 name: Node.js Package
- 
+
 on:
   push:
     branches:
       - main
- 
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -14,7 +14,7 @@ jobs:
         with:
           node-version: 20
       - run: npm ci
- 
+
   sonarcloud:
     needs: build
     runs-on: ubuntu-latest
@@ -28,12 +28,9 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
-          npm install -g sonarqube-scanner
-          sonar-scanner \
+          npx sonarqube-scanner \
             -Dsonar.organization=s009desh \
             -Dsonar.projectKey=s009desh_web-data-sdk \
             -Dsonar.sources=. \
             -Dsonar.host.url=https://sonarcloud.io \
             -Dsonar.login=$SONAR_TOKEN
- 
- 
