@@ -1,10 +1,8 @@
 name: Node.js Package
-
 on:
   push:
     branches:
       - main
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -14,21 +12,21 @@ jobs:
         with:
           node-version: 20
       - run: npm ci
-
   sonarcloud:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v3
         with:
-          node-version: 20
-      - run: npm ci
-      - name: Run SonarCloud Scan
-        env:
+          fetch-depth: 0  
+      - name: SonarQubeScan
+        uses: SonarSource/sonarqube-scan-action@v4
+        env: 
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+ 
         run: |
-          npx sonarqube-scanner \
+          npm install -g sonarqube-scanner
+          sonar-scanner \
             -Dsonar.organization=s009desh \
             -Dsonar.projectKey=s009desh_web-data-sdk \
             -Dsonar.sources=. \
