@@ -1,12 +1,9 @@
-# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
-# For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
-
 name: Node.js Package
-
+ 
 on:
   release:
     types: [created]
-
+ 
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,8 +13,8 @@ jobs:
         with:
           node-version: 20
       - run: npm ci
-
-  publish-npm:
+ 
+  sonarcloud:
     needs: build
     runs-on: ubuntu-latest
     steps:
@@ -25,9 +22,17 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          registry-url: https://registry.npmjs.org/
       - run: npm ci
-      - run: npm run build
-      - run: npm publish --access public
+      - name: Run SonarCloud Scan
         env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_publish_token}}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          npm install -g sonarqube-scanner
+          sonar-scanner \
+            -Dsonar.organization=s009desh \
+            -Dsonar.projectKey=s009desh_web-data-sdk \
+            -Dsonar.sources=. \
+            -Dsonar.host.url=https://sonarcloud.io \
+            -Dsonar.login=$SONAR_TOKEN
+ 
+ 
